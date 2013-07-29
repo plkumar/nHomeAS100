@@ -4,8 +4,18 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-var Devices;
-(function (Devices) {
+var OneWire;
+(function (OneWire) {
+    var DeviceManager = (function () {
+        function DeviceManager() {
+        }
+        DeviceManager.getDevices = function () {
+            return null;
+        };
+        return DeviceManager;
+    })();
+    OneWire.DeviceManager = DeviceManager;
+
     var OneWireDevice = (function () {
         function OneWireDevice(path) {
             this.path = path;
@@ -42,7 +52,7 @@ var Devices;
         };
         return OneWireDevice;
     })();
-    Devices.OneWireDevice = OneWireDevice;
+    OneWire.OneWireDevice = OneWireDevice;
 
     var AddressableSwitch = (function (_super) {
         __extends(AddressableSwitch, _super);
@@ -55,8 +65,8 @@ var Devices;
         };
         return AddressableSwitch;
     })(OneWireDevice);
-    Devices.AddressableSwitch = AddressableSwitch;
-})(Devices || (Devices = {}));
+    OneWire.AddressableSwitch = AddressableSwitch;
+})(OneWire || (OneWire = {}));
 
-var device = new Devices.OneWireDevice("");
+var device = new OneWire.OneWireDevice("");
 var id = device.getId();

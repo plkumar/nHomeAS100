@@ -20,7 +20,13 @@ interface IOneWireTemperatureSensor {
 }
 
 // Module
-module Devices {
+module OneWire {
+
+    export class DeviceManager {
+        static getDevices(): Array<IOneWireDevice>{
+            return null;
+        }
+    }
 
     // Class
     export class OneWireDevice implements IOneWireDevice {
@@ -73,6 +79,6 @@ module Devices {
 }
 
 // Local variables
-var device: IOneWireDevice = new Devices.OneWireDevice("");
+var device: IOneWireDevice = new OneWire.OneWireDevice("");
 var id = device.getId();
 //var chanels = (device Devices.AddressableSwitch).getChannel();
