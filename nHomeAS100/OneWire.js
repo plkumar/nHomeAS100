@@ -128,5 +128,5 @@ var OneWire = exports.OneWire;
 
 var deviceManager = OneWire.DeviceManager.getInstance();
 
-var result = deviceManager.getDevices("C:/Kumar/owfs", {});
+var result = deviceManager.getDevices("/mnt/owfs", {});
 
