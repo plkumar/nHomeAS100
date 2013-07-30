@@ -42,15 +42,16 @@ export module OneWire {
             if (this._instance == null) {
                 this._instance = new DeviceManager();
             }
+
             return this._instance;
         }
 
-        public getDevices(owfspath: string): Array<IOneWireDevice>{
+        public getDevices(owfspath: string, options:any): Array<IOneWireDevice>{
             this.rootPath = owfspath;
             this.fetchDevices();
             return this.devices;
         }
-
+        
         private fetchDevices() {
             var dirs = fs.readdirSync(this.rootPath);
             //console.log(dirs);
@@ -96,6 +97,10 @@ export module OneWire {
             this._devicepath = path;
         }
 
+        private initDevice() {
+
+        }
+
         getId() {
             return this._id;
         }
@@ -119,12 +124,20 @@ export module OneWire {
             return this._alias;
         }
         
-        setAlias(alias: string):boolean {
+        setAlias(alias: string): boolean {
+            fs.writeFile(this._devicepath, alias, function (err) {
+                if (err) {
+                    console.log("OneWire:", "Error" + err);
+                    throw err;
+                }
+                this._alias = alias;
+            });
+
             return true;
         }
 
         getRenderControl(): string {
-            return "<div>Temp</div>";
+            return "<div>Control will be rendered here</div>";
         }
     }
 
@@ -151,4 +164,4 @@ export module OneWire {
 // Local variables
 var deviceManager = OneWire.DeviceManager.getInstance();
 
-var result = deviceManager.getDevices("C:/Kumar/owfs");
+var result = deviceManager.getDevices("C:/Kumar/owfs", {});
