@@ -42,14 +42,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="OneWireDevice.ts" />
+    <TypeScriptCompile Include="OneWire.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="OneWireDevice.js">
-      <DependentUpon>OneWireDevice.ts</DependentUpon>
+    <Content Include="OneWire.js">
+      <DependentUpon>OneWire.ts</DependentUpon>
     </Content>
-    <Content Include="OneWireDevice.min.js">
-      <DependentUpon>OneWireDevice.ts</DependentUpon>
+    <Content Include="OneWire.min.js">
+      <DependentUpon>OneWire.ts</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
