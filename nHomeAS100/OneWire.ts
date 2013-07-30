@@ -29,13 +29,13 @@ export interface IOneWireTemperatureSensor {
 export module OneWire {
 
     export class DeviceManager {
-        private rootPath:string="";
-        private devices: Array<IOneWireDevice>;
+        private _rootPath:string="";
+        private _devices: Array<IOneWireDevice>;
         private _instance: DeviceManager;
-        private owdeviceidregex: string = '[A-F0-9]{2}.[A-F0-9]{12}';
+        private _owdeviceidregex: string = '[A-F0-9]{2}.[A-F0-9]{12}';
         constructor()
         {
-            this.devices = new Array<IOneWireDevice>();
+            this._devices = new Array<IOneWireDevice>();
         }
 
         public static getInstance(): DeviceManager {
@@ -47,29 +47,27 @@ export module OneWire {
         }
 
         public getDevices(owfspath: string, options:any): Array<IOneWireDevice>{
-            this.rootPath = owfspath;
+            this._rootPath = owfspath;
             this.fetchDevices();
-            return this.devices;
+            return this._devices;
         }
         
         private fetchDevices() {
-            var dirs = fs.readdirSync(this.rootPath);
+            var dirs = fs.readdirSync(this._rootPath);
             //console.log(dirs);
-            var regEx = new RegExp(this.owdeviceidregex,"g");
+            var regEx = new RegExp(this._owdeviceidregex,"g");
             
             for (var index in dirs) {
                 //console.log('Directory :' + dirs[index]);
 
                 if (regEx.test(dirs[index])) {
-                    var path = this.rootPath + "/" + dirs[index];
+                    var path = this._rootPath + "/" + dirs[index];
                     var device = new OneWireDevice(path);
-
+                    this._devices.push(device);
                     console.log("OneWire:", "this [" + path + "] is onewire device" );
                 }
                 //var stat = fs.statSync(this.rootPath + "/" + dir);
-
             }
-            this.devices.push()
         }
     }
 
@@ -87,18 +85,20 @@ export module OneWire {
         private _devicepath: string;
 
         constructor(public path: string) {
+            
+            this._devicepath = path;
+            //Initialize the the Device
+            this.initDevice();
+
+        }
+
+        private initDevice() {
             this._id = "";
             this._family = "";
             this._crc = "";
             this._address = "";
             this._type = "";
             this._alias = "";
-
-            this._devicepath = path;
-        }
-
-        private initDevice() {
-
         }
 
         getId() {
@@ -142,7 +142,8 @@ export module OneWire {
     }
 
     export class AddressableSwitch extends OneWireDevice implements IOneWireSwitch{
-        
+        private _pios = Array<any>();
+
         constructor(public path: string) {
             super(path);
         }

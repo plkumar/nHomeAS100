@@ -9,9 +9,9 @@ var fs = require("fs");
 (function (OneWire) {
     var DeviceManager = (function () {
         function DeviceManager() {
-            this.rootPath = "";
-            this.owdeviceidregex = '[A-F0-9]{2}.[A-F0-9]{12}';
-            this.devices = new Array();
+            this._rootPath = "";
+            this._owdeviceidregex = '[A-F0-9]{2}.[A-F0-9]{12}';
+            this._devices = new Array();
         }
         DeviceManager.getInstance = function () {
             if (this._instance == null) {
@@ -22,25 +22,24 @@ var fs = require("fs");
         };
 
         DeviceManager.prototype.getDevices = function (owfspath, options) {
-            this.rootPath = owfspath;
+            this._rootPath = owfspath;
             this.fetchDevices();
-            return this.devices;
+            return this._devices;
         };
 
         DeviceManager.prototype.fetchDevices = function () {
-            var dirs = fs.readdirSync(this.rootPath);
+            var dirs = fs.readdirSync(this._rootPath);
 
-            var regEx = new RegExp(this.owdeviceidregex, "g");
+            var regEx = new RegExp(this._owdeviceidregex, "g");
 
             for (var index in dirs) {
                 if (regEx.test(dirs[index])) {
-                    var path = this.rootPath + "/" + dirs[index];
+                    var path = this._rootPath + "/" + dirs[index];
                     var device = new OneWireDevice(path);
-
+                    this._devices.push(device);
                     console.log("OneWire:", "this [" + path + "] is onewire device");
                 }
             }
-            this.devices.push();
         };
         return DeviceManager;
     })();
@@ -49,16 +48,17 @@ var fs = require("fs");
     var OneWireDevice = (function () {
         function OneWireDevice(path) {
             this.path = path;
+            this._devicepath = path;
+
+            this.initDevice();
+        }
+        OneWireDevice.prototype.initDevice = function () {
             this._id = "";
             this._family = "";
             this._crc = "";
             this._address = "";
             this._type = "";
             this._alias = "";
-
-            this._devicepath = path;
-        }
-        OneWireDevice.prototype.initDevice = function () {
         };
 
         OneWireDevice.prototype.getId = function () {
@@ -108,6 +108,7 @@ var fs = require("fs");
         function AddressableSwitch(path) {
             _super.call(this, path);
             this.path = path;
+            this._pios = Array();
         }
         AddressableSwitch.prototype.getChannels = function () {
             return 2;
