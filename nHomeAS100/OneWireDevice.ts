@@ -1,3 +1,5 @@
+
+
 interface IOneWireDevice{
     getId(): string;
     getFamily(): string;
@@ -16,15 +18,34 @@ interface IOneWireSwitch  {
 }
 
 interface IOneWireTemperatureSensor {
-    getTemperature():number;
+    getTemperature(): number;
+    setAlarm(templow: number, temphigh: number): boolean;
 }
 
 // Module
 module OneWire {
 
     export class DeviceManager {
-        static getDevices(): Array<IOneWireDevice>{
-            return null;
+        private devices: Array<IOneWireDevice>;
+        private _instance: DeviceManager;
+        constructor()
+        {
+            this.devices = new Array<IOneWireDevice>();
+        }
+
+        public static getInstance(): DeviceManager {
+            if (this._instance == null) {
+                this._instance = new DeviceManager();
+            }
+            return this._instance;
+        }
+
+        public getDevices(owfspath:string): Array<IOneWireDevice>{
+            return this.devices;
+        }
+
+        private fetchDevices() {
+            this.devices.push()
         }
     }
 
