@@ -56,7 +56,7 @@ export module OneWire {
         private fetchDevices() {
             var dirs = fs.readdirSync(this._rootPath);
             //console.log(dirs);
-            var regEx = new RegExp(this._owdeviceidregex,"g");
+            var regEx = new RegExp(this._owdeviceidregex);
             
             for (var index in dirs) {
                 //console.log('Directory :' + dirs[index]);

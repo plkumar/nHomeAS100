@@ -30,7 +30,7 @@ var fs = require("fs");
         DeviceManager.prototype.fetchDevices = function () {
             var dirs = fs.readdirSync(this._rootPath);
 
-            var regEx = new RegExp(this._owdeviceidregex, "g");
+            var regEx = new RegExp(this._owdeviceidregex);
 
             for (var index in dirs) {
                 if (regEx.test(dirs[index])) {
