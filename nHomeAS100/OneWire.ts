@@ -33,6 +33,7 @@ export module OneWire {
         private _devices: Array<IOneWireDevice>;
         private _instance: DeviceManager;
         private _owdeviceidregex: string = '[A-F0-9]{2}.[A-F0-9]{12}';
+        
         constructor()
         {
             this._devices = new Array<IOneWireDevice>();
