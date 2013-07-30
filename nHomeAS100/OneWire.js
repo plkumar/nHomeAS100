@@ -53,7 +53,8 @@ var fs = require("fs");
             this.initDevice();
         }
         OneWireDevice.prototype.initDevice = function () {
-            this._id = "";
+            this._id = fs.readFile(this._devicepath + "/id", { 'encoding': 'ASCII' });
+            console.log('OneWire:', 'id:' + this._id);
             this._family = "";
             this._crc = "";
             this._address = "";
