@@ -95,13 +95,14 @@ export module OneWire {
 
         private initDevice() {
             
-            this._id = fs.readFile(this._devicepath + "/id", { 'encoding': 'ASCII' });
+            this._id = fs.readFileSync(this._devicepath + "/id", 'ascii');
+            this._family = fs.readFileSync(this._devicepath + "/family", 'ascii');
+            this._crc = fs.readFileSync(this._devicepath + "/crc8", 'ascii');
+            this._address = fs.readFileSync(this._devicepath + "/address", 'ascii');
+            this._type = fs.readFileSync(this._devicepath + "/type", 'ascii');
+            this._alias = fs.readFileSync(this._devicepath + "/alias", 'ascii');
+
             console.log('OneWire:', 'id:' + this._id);
-            this._family = "";
-            this._crc = "";
-            this._address = "";
-            this._type = "";
-            this._alias = "";
         }
 
         getId() {
