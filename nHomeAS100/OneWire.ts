@@ -166,4 +166,4 @@ export module OneWire {
 // Local variables
 var deviceManager = OneWire.DeviceManager.getInstance();
 
-var result = deviceManager.getDevices("C:/Kumar/owfs", {});
+var result = deviceManager.getDevices("/mnt/owfs", {});
