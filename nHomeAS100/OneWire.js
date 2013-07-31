@@ -100,8 +100,10 @@ var fs = require("fs");
             }
         };
 
-        OneWireDevice.prototype.getRenderControl = function () {
-            return "<div>Control will be rendered here</div>";
+        OneWireDevice.prototype.renderControl = function () {
+            return "ID: " + this._id + "\n";
+            "Type: " + this._type + "\n";
+            "Family: " + this._family + "\n";
         };
         return OneWireDevice;
     })();
@@ -134,9 +136,7 @@ var deviceManager = OneWire.DeviceManager.getInstance();
 
 var result = deviceManager.getDevices("/mnt/owfs", {});
 
-if (result) {
-    result[0].setAlias("owdevice02");
+for (var index in result) {
+    console.log(result[index].renderControl());
 }
-
-console.log(result);
 

@@ -11,7 +11,7 @@ export interface IOneWireDevice{
     getType(): string;
     getAlias(): string;
     setAlias(alias: string): boolean;
-    getRenderControl(): string;
+    renderControl(): string;
 }
 
 export interface IOneWireSwitch  {
@@ -143,8 +143,10 @@ export module OneWire {
             }
         }
 
-        getRenderControl(): string {
-            return "<div>Control will be rendered here</div>";
+        renderControl(): string {
+            return  "ID: " + this._id + "\n"
+                    "Type: " + this._type + "\n"
+                    "Family: " + this._family + "\n";
         }
     }
 
@@ -174,8 +176,7 @@ var deviceManager = OneWire.DeviceManager.getInstance();
 
 var result = deviceManager.getDevices("/mnt/owfs", {});
 
-if (result) {
-    result[0].setAlias("owdevice02");
+for (var index in result)
+{
+    console.log(result[index].renderControl());
 }
-
-console.log(result);
