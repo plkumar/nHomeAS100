@@ -129,7 +129,7 @@ export module OneWire {
         }
         
         setAlias(alias: string): boolean {
-            fs.writeFile(this._devicepath, alias, function (err) {
+            fs.writeFile(this._devicepath +"/alias", alias, function (err) {
                 if (err) {
                     console.log("OneWire:", "Error" + err);
                     throw err;

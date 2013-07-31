@@ -87,7 +87,7 @@ var fs = require("fs");
         };
 
         OneWireDevice.prototype.setAlias = function (alias) {
-            fs.writeFile(this._devicepath, alias, function (err) {
+            fs.writeFile(this._devicepath + "/alias", alias, function (err) {
                 if (err) {
                     console.log("OneWire:", "Error" + err);
                     throw err;
