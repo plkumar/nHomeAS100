@@ -93,6 +93,10 @@ var fs = require("fs");
             console.log('OneWire:', 'id:' + this._id);
         };
 
+        OneWireDevice.prototype.getDevicePath = function () {
+            return this._devicepath;
+        };
+
         OneWireDevice.prototype.getId = function () {
             return this._id;
         };
@@ -143,9 +147,11 @@ var fs = require("fs");
             _super.call(this, path);
             this.path = path;
             this._pios = Array();
+            this._channels = 0;
         }
         AddressableSwitch.prototype.getChannels = function () {
-            return 2;
+            this._channels = fs.readFileSync(_super.prototype.getDevicePath.call(this) + "/channels", 'ascii');
+            return this._channels;
         };
 
         AddressableSwitch.prototype.getChannelState = function (channel) {
@@ -153,6 +159,10 @@ var fs = require("fs");
         };
 
         AddressableSwitch.prototype.setPIOState = function (channel, state) {
+        };
+
+        AddressableSwitch.prototype.renderControl = function () {
+            return _super.prototype.renderControl.call(this);
         };
         return AddressableSwitch;
     })(OneWireDevice);

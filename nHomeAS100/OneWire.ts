@@ -12,6 +12,7 @@ export interface IOneWireDevice{
     getAlias(): string;
     setAlias(alias: string): boolean;
     renderControl(): string;
+    getDevicePath(): string;
 }
 
 export interface IOneWireSwitch  {
@@ -140,6 +141,11 @@ export module OneWire {
             console.log('OneWire:', 'id:' + this._id);
         }
 
+        getDevicePath():string
+        {
+            return this._devicepath;
+        }
+
         getId() {
             return this._id;
         }
@@ -187,13 +193,15 @@ export module OneWire {
 
     export class AddressableSwitch extends OneWireDevice implements IOneWireSwitch{
         private _pios = Array<any>();
+        private _channels:number = 0;
 
         constructor(public path: string) {
             super(path);
         }
     
         getChannels(): number{
-            return 2;
+            this._channels = fs.readFileSync(super.getDevicePath() + "/channels", 'ascii');
+            return this._channels;
         }
 
         getChannelState(channel:string): boolean{
@@ -202,6 +210,10 @@ export module OneWire {
 
         setPIOState(channel: string, state: boolean) {
 
+        }
+
+        renderControl(): string{
+            return super.renderControl();
         }
     }
 }
