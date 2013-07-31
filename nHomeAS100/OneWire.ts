@@ -135,6 +135,9 @@ export module OneWire {
                     throw err;
                 }
                 this._alias = alias;
+                console.log("OneWire:", "Device alias:" + this._alias);
+                this._devicePath = this.devicePath.replace(this._id, this._alias);
+                console.log("OneWire:", "Device Path :" + this._devicepath);
             });
 
             return true;
@@ -172,7 +175,7 @@ var deviceManager = OneWire.DeviceManager.getInstance();
 var result = deviceManager.getDevices("/mnt/owfs", {});
 
 if (result) {
-    result[0].setAlias("owdevice01");
+    result[0].setAlias("owdevice02");
 }
 
 console.log(result);
