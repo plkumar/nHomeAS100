@@ -132,3 +132,9 @@ var deviceManager = OneWire.DeviceManager.getInstance();
 
 var result = deviceManager.getDevices("/mnt/owfs", {});
 
+if (result) {
+    result[0].setAlias("owdevice01");
+}
+
+console.log(result);
+
