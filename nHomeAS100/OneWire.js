@@ -11,11 +11,8 @@ var fs = require("fs");
         function DeviceManager() {
             this._rootPath = "";
             this._owdeviceidregex = '[A-F0-9]{2}.[A-F0-9]{12}';
-        }
-        DeviceManager.prototype.constructor = function () {
             this._devices = new Array();
-        };
-
+        }
         DeviceManager.getInstance = function () {
             if (this._instance == null) {
                 this._instance = new DeviceManager();
