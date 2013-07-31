@@ -34,7 +34,7 @@ export module OneWire {
         private _instance: DeviceManager;
         private _owdeviceidregex: string = '[A-F0-9]{2}.[A-F0-9]{12}';
         
-        constructor()
+        private constructor()
         {
             this._devices = new Array<IOneWireDevice>();
         }
@@ -51,6 +51,41 @@ export module OneWire {
             this._rootPath = owfspath;
             this.fetchDevices();
             return this._devices;
+        }
+
+        public getDeviceById(id: string): IOneWireDevice{
+            for (var index in this._devices)
+            {
+                if (this._devices[index].getId() === id)
+                {
+                    return this._devices[index];
+                }
+            }
+
+            return null;
+        }
+
+        public getDeviceByAlias(alias: string): IOneWireDevice {
+            for (var index in this._devices)
+            {
+                if (this._devices[index].getAlias() === alias)
+                {
+                    return this._devices[index];
+                }
+            }
+
+            return null;
+        }
+
+        public getDevicesByFamily(family: string): Array<IOneWireDevice>{
+            var familyDevices = new Array<IOneWireDevice>();
+            this._devices.forEach((value) => {
+                if (value.getFamily() === family)
+                {
+                    familyDevices.push(value);
+                }
+            });
+            return familyDevices;
         }
         
         private fetchDevices() {

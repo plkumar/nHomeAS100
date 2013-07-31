@@ -11,8 +11,11 @@ var fs = require("fs");
         function DeviceManager() {
             this._rootPath = "";
             this._owdeviceidregex = '[A-F0-9]{2}.[A-F0-9]{12}';
-            this._devices = new Array();
         }
+        DeviceManager.prototype.constructor = function () {
+            this._devices = new Array();
+        };
+
         DeviceManager.getInstance = function () {
             if (this._instance == null) {
                 this._instance = new DeviceManager();
@@ -25,6 +28,36 @@ var fs = require("fs");
             this._rootPath = owfspath;
             this.fetchDevices();
             return this._devices;
+        };
+
+        DeviceManager.prototype.getDeviceById = function (id) {
+            for (var index in this._devices) {
+                if (this._devices[index].getId() === id) {
+                    return this._devices[index];
+                }
+            }
+
+            return null;
+        };
+
+        DeviceManager.prototype.getDeviceByAlias = function (alias) {
+            for (var index in this._devices) {
+                if (this._devices[index].getAlias() === alias) {
+                    return this._devices[index];
+                }
+            }
+
+            return null;
+        };
+
+        DeviceManager.prototype.getDevicesByFamily = function (family) {
+            var familyDevices = new Array();
+            this._devices.forEach(function (value) {
+                if (value.getFamily() === family) {
+                    familyDevices.push(value);
+                }
+            });
+            return familyDevices;
         };
 
         DeviceManager.prototype.fetchDevices = function () {
