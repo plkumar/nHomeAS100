@@ -101,9 +101,7 @@ var fs = require("fs");
         };
 
         OneWireDevice.prototype.renderControl = function () {
-            return "ID: " + this._id + "\n";
-            "Type: " + this._type + "\n";
-            "Family: " + this._family + "\n";
+            return "ID: " + this._id + " Type: " + this._type + " Family: " + this._family;
         };
         return OneWireDevice;
     })();

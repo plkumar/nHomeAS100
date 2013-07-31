@@ -144,9 +144,9 @@ export module OneWire {
         }
 
         renderControl(): string {
-            return  "ID: " + this._id + "\n"
-                    "Type: " + this._type + "\n"
-                    "Family: " + this._family + "\n";
+            return "ID: " + this._id +
+                    " Type: " + this._type + 
+                    " Family: " + this._family ;
         }
     }
 
