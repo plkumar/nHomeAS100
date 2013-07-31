@@ -133,7 +133,8 @@ export module OneWire {
                 fs.writeFileSync(this._devicepath + "/alias", alias);
                 this._alias = alias;
                 console.log("OneWire:", "Device alias:" + this._alias);
-                this._devicepath = this._devicepath.replace(this._id, this._alias);
+                var newdevicepath = "" + this._devicepath;
+                this._devicepath = newdevicepath.replace(this._id, this._alias);
                 console.log("OneWire:", "Device Path :" + this._devicepath);
                 return true;
             } catch (err) {
