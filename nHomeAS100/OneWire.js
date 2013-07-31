@@ -94,7 +94,7 @@ var fs = require("fs");
                 }
                 this._alias = alias;
                 console.log("OneWire:", "Device alias:" + this._alias);
-                this._devicePath = this._devicepath.replace(this._id, this._alias);
+                this._devicepath = this._devicepath.replace(this._id, this._alias);
                 console.log("OneWire:", "Device Path :" + this._devicepath);
             });
 
