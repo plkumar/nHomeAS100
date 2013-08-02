@@ -5,6 +5,7 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 var fs = require("fs");
+var express = require("express");
 
 (function (OneWire) {
     var DeviceManager = (function () {

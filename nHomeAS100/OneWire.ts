@@ -1,6 +1,7 @@
 /// <reference path="../../DefinitelyTyped/node/node.d.ts" />
-
-var fs = require("fs");
+/// <reference path="../../DefinitelyTyped/express/express.d.ts" />
+import fs = module("fs");
+import express = module("express");
 
 export interface IOneWireDevice{
     // Regular Expression for Device ID "[A-F0-9]{2}.[A-F0-9]{12}"
@@ -101,7 +102,7 @@ export module OneWire {
                     var path = this._rootPath + "/" + dirs[index];
                     var device = new OneWireDevice(path);
                     this._devices.push(device);
-                    console.log("OneWire:", "this [" + path + "] is onewire device" );
+                    console.log("OneWire:", "this [" + path + "] is onewire device");
                 }
                 //var stat = fs.statSync(this.rootPath + "/" + dir);
             }
