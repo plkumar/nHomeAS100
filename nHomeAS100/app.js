@@ -1,4 +1,4 @@
-var ow = require("./onewire");
+var ow = require("./OneWire");
 
 var onewire = ow.OneWire;
 

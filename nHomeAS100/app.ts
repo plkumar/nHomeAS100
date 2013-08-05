@@ -1,4 +1,4 @@
-import ow = module("onewire");
+import ow = module("OneWire");
 
 var onewire = ow.OneWire;
 
