@@ -219,12 +219,14 @@ export module OneWire {
     }
 }
 
-// Local variables
-var deviceManager = OneWire.DeviceManager.getInstance();
+exports.onewire = OneWire;
 
-var result = deviceManager.getDevices("/mnt/owfs", {});
+//// Local variables
+//var deviceManager = OneWire.DeviceManager.getInstance();
 
-for (var index in result)
-{
-    console.log(result[index].renderControl());
-}
+//var result = deviceManager.getDevices("/mnt/owfs", {});
+
+//for (var index in result)
+//{
+//    console.log(result[index].renderControl());
+//}

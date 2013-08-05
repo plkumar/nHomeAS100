@@ -171,11 +171,5 @@ var express = require("express");
 })(exports.OneWire || (exports.OneWire = {}));
 var OneWire = exports.OneWire;
 
-var deviceManager = OneWire.DeviceManager.getInstance();
-
-var result = deviceManager.getDevices("/mnt/owfs", {});
-
-for (var index in result) {
-    console.log(result[index].renderControl());
-}
+exports.onewire = OneWire;
 
