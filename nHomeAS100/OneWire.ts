@@ -1,7 +1,6 @@
 /// <reference path="../../DefinitelyTyped/node/node.d.ts" />
-/// <reference path="../../DefinitelyTyped/express/express.d.ts" />
 import fs = module("fs");
-//import express = module("express");
+
 
 export interface IOneWireDevice{
     // Regular Expression for Device ID "[A-F0-9]{2}.[A-F0-9]{12}"

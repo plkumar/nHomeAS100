@@ -41,6 +41,14 @@
     <TypeScriptCompile Include="OneWire.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="public\stylesheets\style.css" />
+    <Content Include="routes\index.js">
+      <DependentUpon>index.ts</DependentUpon>
+    </Content>
+    <Content Include="routes\index.min.js">
+      <DependentUpon>index.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="routes\index.ts" />
     <TypeScriptCompile Include="app.ts" />
     <Content Include="app.js">
       <DependentUpon>app.ts</DependentUpon>
@@ -57,6 +65,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="package.json" />
+    <None Include="views\account.ejs" />
+    <None Include="views\index.ejs" />
+    <None Include="views\layoutBottom.ejs" />
+    <None Include="views\layoutTop.ejs" />
+    <None Include="views\login.ejs" />
+    <None Include="views\user.ejs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="public\images\" />
+    <Folder Include="public\javascripts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
