@@ -1,0 +1,14 @@
+﻿{
+  "name": "nHomeAS100",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.2.0",
+    "ejs": "*",
+    "express-ejs-layouts":"*",
+	"node-sqlite-purejs":"*"
+  }
+}
