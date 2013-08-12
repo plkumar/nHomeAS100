@@ -41,6 +41,13 @@
     <TypeScriptCompile Include="OneWire.ts" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="DbManager.ts" />
+    <Content Include="DbManager.js">
+      <DependentUpon>DbManager.ts</DependentUpon>
+    </Content>
+    <Content Include="DbManager.min.js">
+      <DependentUpon>DbManager.ts</DependentUpon>
+    </Content>
     <Content Include="public\stylesheets\style.css" />
     <Content Include="routes\index.js">
       <DependentUpon>index.ts</DependentUpon>

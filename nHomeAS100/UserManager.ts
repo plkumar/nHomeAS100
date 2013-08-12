@@ -34,3 +34,5 @@ export module UserManager{
         }
     }
 }
+
+exports.UserManager = UserManager;

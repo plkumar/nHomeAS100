@@ -34,3 +34,5 @@
 })(exports.UserManager || (exports.UserManager = {}));
 var UserManager = exports.UserManager;
 
+exports.UserManager = UserManager;
+
