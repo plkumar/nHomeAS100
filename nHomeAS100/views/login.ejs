@@ -1,18 +1,34 @@
+<% layout('boilerplate') -%>
 <% if (message) { %>
 <p><%= message %></p>
 <% } %>
-<form action="/login" method="post">
-	<div>
-	<label>Username:</label>
-	<input type="text" name="username"/><br/>
-	</div>
-	<div>
-	<label>Password:</label>
-	<input type="password" name="password"/>
-	</div>
-	<div>
-	<input type="submit" value="Submit"/>
-	</div>
-</form>
-<p><small>Hint - bob:secret</small></p>
+
+<div data-role="page">
+	<div data-role="header">
+		<h1>Login</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<form action="/login" method="post">
+			<div>
+			<label>Username:</label>
+			<input type="text" name="username"/><br/>
+			</div>
+			<div>
+			<label>Password:</label>
+			<input type="password" name="password"/>
+			</div>
+			<div>
+			<input type="submit" value="Submit"/>
+			</div>
+		</form>
+		<p><small>Hint - bob:secret</small></p>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div>
+
+
 

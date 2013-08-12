@@ -114,11 +114,11 @@ app.get('/', routes.index);
 //app.get('/users', user.list);
 
 app.get('/account', ensureAuthenticated, function (req, res) {
-    res.render('account', { user: req.user });
+    res.render('account', { title: 'Account', user: req.user, message: req.flash('error') });
 });
 
 app.get('/login', function (req, res) {
-    res.render('login', { user: req.user, message: req.flash('error') });
+    res.render('login', { title: 'Login', user: req.user, message: req.flash('error') });
 });
 
 

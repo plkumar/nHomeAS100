@@ -1,2 +1,19 @@
-<p>Username: <%= user.username %></p>
-<p>Email: <%= user.email %></p>
+<% layout('boilerplate') -%>
+<% if (message) { %>
+<p><%= message %></p>
+<% } %>
+
+<div data-role="page">
+	<div data-role="header">
+		<h1>Login</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+    <p>Username: <%= user.username %></p>
+    <p>Email: <%= user.email %></p>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div>
