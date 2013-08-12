@@ -12,6 +12,7 @@
 	"ejs-locals":"*",
     "passport":"*",
     "passport-local":"*",
-    "connect-flash":"*"
+    "connect-flash":"*",
+	"sqlite3":"*"
   }
 }

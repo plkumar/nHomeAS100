@@ -48,6 +48,13 @@
     <Content Include="routes\index.min.js">
       <DependentUpon>index.ts</DependentUpon>
     </Content>
+    <Content Include="sqlite_test.js">
+      <DependentUpon>sqlite_test.ts</DependentUpon>
+    </Content>
+    <Content Include="sqlite_test.min.js">
+      <DependentUpon>sqlite_test.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="sqlite_test.ts" />
     <TypeScriptCompile Include="routes\index.ts" />
     <TypeScriptCompile Include="app.ts" />
     <Content Include="app.js">
@@ -64,6 +71,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="db\nhomeasdb.db" />
     <None Include="package.json" />
     <None Include="views\account.ejs" />
     <None Include="views\boilerplate.ejs" />
