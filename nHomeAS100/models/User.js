@@ -5,7 +5,7 @@ var bcrypt = require('bcrypt-nodejs');
 var SALT_WORK_FACTOR = 10;
 
 module.exports = function (sequelize, DataTypes) {
-    return sequelize.define('User', {
+    var User = sequelize.define('User', {
         id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
         userName: { type: DataTypes.STRING },
         password: {
@@ -16,7 +16,7 @@ module.exports = function (sequelize, DataTypes) {
                 var hash = bcrypt.hashSync(value, salt);
                 console.log('in setter:' + value + ' hash: ' + hash);
                 //this.password = hash;
-                return this.setDataValue('password',hash);
+                return this.setDataValue('password', hash);
             }
         },
         firstName: DataTypes.STRING,
@@ -27,9 +27,21 @@ module.exports = function (sequelize, DataTypes) {
                 //console.log('Comparing Password : ' + candidatePassword);
                 //console.log('with : ' + this.password);
                 return bcrypt.compareSync(candidatePassword, this.password);
+            },
+            generateRandomToken : function () {
+                var user = this,
+                    chars = "_!abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+                    token = new Date().getTime() + '_';
+                for ( var x = 0; x < 16; x++ ) {
+                    var i = Math.floor( Math.random() * 62 );
+                    token += chars.charAt( i );
+                }
+                return token;
             }
         }
-    })
+    });
+
+    return User;
 }
 
 
