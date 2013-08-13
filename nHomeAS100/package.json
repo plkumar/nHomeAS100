@@ -14,6 +14,7 @@
       "passport-local":"*",
       "connect-flash":"*",
       "sqlite3":"*",
-      "sequelize-sqlite":"*"
+      "sequelize-sqlite":"*",
+	  "bcrypt-nodejs": ">= 0.0.0"
    }
 }

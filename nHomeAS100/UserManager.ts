@@ -1,7 +1,12 @@
 /// <reference path="../../DefinitelyTyped/node/node.d.ts" />
 
-export module UserManager{
+var sequelize = require('sequelize-sqlite').sequelize
+var sqlite    = require('sequelize-sqlite').sqlite
 
+export module UserManager{
+    var User = sequelize.define('User', {
+        id:
+    });
     export class User{
         private _userId: string;
         private _firstName: string;

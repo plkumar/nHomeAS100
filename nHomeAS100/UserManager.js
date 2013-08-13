@@ -1,3 +1,6 @@
+var sequelize = require('sequelize-sqlite').sequelize;
+var sqlite = require('sequelize-sqlite').sqlite;
+
 (function (UserManager) {
     var User = (function () {
         function User(userid, password, firstName, lastName) {
