@@ -24,6 +24,7 @@ var sqlite = require('sequelize-sqlite').sqlite;
 
         DbManager.User.sync({ force: true }).success(function () {
             var adminUser = DbManager.User.build({ userName: 'admin', password: 'admin', firstName: 'Lakshman', lastName: 'Peethani' });
+            adminUser.password = 'admin';
             adminUser.save().success(function () {
                 console.log('user added successfully');
             }).error(function (error) {
