@@ -30,6 +30,10 @@ var sqlite = require('sequelize-sqlite').sqlite;
             }).error(function (error) {
                 console.log('failed to add user' + error);
             });
+
+            var guestUser = DbManager.User.build({ userName: 'guest', password: 'guest', firstName: 'Guest', lastName: 'User' });
+            guestUser.password = 'admin';
+            guestUser.save();
         });
 
         DbManager.Area.sync({ force: true });

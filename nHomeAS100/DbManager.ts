@@ -44,6 +44,11 @@ export module DbManager{
             }).error(function (error) {
                     console.log('failed to add user' + error);
             });
+
+            var guestUser = User.build({ userName: 'guest', password: 'guest', firstName: 'Guest', lastName: 'User' });
+            guestUser.password = 'admin';
+            guestUser.save();
+
         });
 
         Area.sync({ force: true });
