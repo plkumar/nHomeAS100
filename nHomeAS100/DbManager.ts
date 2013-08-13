@@ -20,7 +20,7 @@ export module DbManager{
                 
                 console.log('user added successfully');
                 
-                var someUser = User.find({ userName: 'admin' }).success(function (user) {
+                User.find({ userName: 'admin' }).success(function (user) {
                     
                     console.log('result:' + user.firstName);
 
