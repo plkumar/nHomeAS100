@@ -17,7 +17,7 @@ import db = module("DbManager");
 
 function findByUsername(username, fn) {
 
-    db.DbManager.User.find({ userid: username }).success(function (founduser) {
+    db.DbManager.User.find({ where : { userName: username } }).success(function (founduser) {
         //console.log('Found User ::' + founduser.firstName);
         return fn(null, founduser);
     }).error(function (error) {
