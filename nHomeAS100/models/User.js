@@ -12,6 +12,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING, get: function () {
                 return this.getDataValue('password');
             }, set: function (value) {
+                console.log("Value :" + value + "   " + bcrypt.getRounds(value));
                 if (bcrypt.getRounds(value) < 1) {
                     var salt = bcrypt.genSaltSync(SALT_WORK_FACTOR);
                     var hash = bcrypt.hashSync(value, salt);
