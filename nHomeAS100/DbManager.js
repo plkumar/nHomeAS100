@@ -24,7 +24,6 @@ var sqlite = require('sequelize-sqlite').sqlite;
 
         DbManager.User.sync({ force: true }).success(function () {
             var adminUser = DbManager.User.build({ userName: 'admin', password: 'admin', firstName: 'Lakshman', lastName: 'Peethani' });
-            adminUser.password = 'admin';
             adminUser.save().success(function () {
                 console.log('user added successfully');
             }).error(function (error) {
@@ -32,7 +31,6 @@ var sqlite = require('sequelize-sqlite').sqlite;
             });
 
             var guestUser = DbManager.User.build({ userName: 'guest', password: 'guest', firstName: 'Guest', lastName: 'User' });
-            guestUser.password = 'admin';
             guestUser.save();
         });
 
