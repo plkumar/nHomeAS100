@@ -16,7 +16,7 @@ var LocalStrategy = require('passport-local').Strategy;
 import db = module("DbManager");
 
 function findByUsername(username, fn) {
-    
+
     db.DbManager.User.find({ userid: username }).success(function (founduser) {
         //console.log('Found User ::' + founduser.firstName);
         return fn(null, founduser);
