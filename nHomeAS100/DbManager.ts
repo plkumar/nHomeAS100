@@ -6,21 +6,22 @@ export module DbManager{
     //var sqlite3 = require('sqlite3').verbose();
     //var db = new sqlite3.Database('db/nhomeasdb.db');
 
+    var sequelize = new Sequelize('database', 'username', 'password', {
+        dialect: 'sqlite',
+        storage: 'db/nhomeasdb.db'
+    });
+
+    export var User = sequelize.import(__dirname + "/models/User");
+
+    export var Area = sequelize.import(__dirname + "/models/Area");
+
+    export var Favourite = sequelize.import(__dirname + "/models/Favourite");
+
+    export var Device = sequelize.import(__dirname + "/models/Device");
+
     export function initialize() {
-        var sequelize = new Sequelize('database', 'username', 'password', {
-            dialect: 'sqlite',
-            storage: 'db/nhomeasdb.db'
-        });
-
-        var User = sequelize.import(__dirname + "/models/User");
-
-        var Area = sequelize.import(__dirname + "/models/Area");
-
-        var Favourite = sequelize.import(__dirname + "/models/Favourite");
-
+        
         User.hasMany(Favourite, { as: 'Favourites' });
-
-        var Device = sequelize.import(__dirname + "/models/Device");
         
         Favourite.sync({ force: true });
         
@@ -53,4 +54,4 @@ export module DbManager{
 
 exports.DbManager = DbManager;
 
-DbManager.initialize();
+//DbManager.initialize();

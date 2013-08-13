@@ -2,28 +2,28 @@ var Sequelize = require('sequelize-sqlite').sequelize;
 var sqlite = require('sequelize-sqlite').sqlite;
 
 (function (DbManager) {
+    var sequelize = new Sequelize('database', 'username', 'password', {
+        dialect: 'sqlite',
+        storage: 'db/nhomeasdb.db'
+    });
+
+    DbManager.User = sequelize.import(__dirname + "/models/User");
+
+    DbManager.Area = sequelize.import(__dirname + "/models/Area");
+
+    DbManager.Favourite = sequelize.import(__dirname + "/models/Favourite");
+
+    DbManager.Device = sequelize.import(__dirname + "/models/Device");
+
     function initialize() {
-        var sequelize = new Sequelize('database', 'username', 'password', {
-            dialect: 'sqlite',
-            storage: 'db/nhomeasdb.db'
-        });
+        DbManager.User.hasMany(DbManager.Favourite, { as: 'Favourites' });
 
-        var User = sequelize.import(__dirname + "/models/User");
+        DbManager.Favourite.sync({ force: true });
 
-        var Area = sequelize.import(__dirname + "/models/Area");
+        DbManager.Area.hasMany(DbManager.Device);
 
-        var Favourite = sequelize.import(__dirname + "/models/Favourite");
-
-        User.hasMany(Favourite, { as: 'Favourites' });
-
-        var Device = sequelize.import(__dirname + "/models/Device");
-
-        Favourite.sync({ force: true });
-
-        Area.hasMany(Device);
-
-        User.sync({ force: true }).success(function () {
-            var adminUser = User.build({ userName: 'admin', password: 'admin', firstName: 'Lakshman', lastName: 'Peethani' });
+        DbManager.User.sync({ force: true }).success(function () {
+            var adminUser = DbManager.User.build({ userName: 'admin', password: 'admin', firstName: 'Lakshman', lastName: 'Peethani' });
             adminUser.save().success(function () {
                 console.log('user added successfully');
             }).error(function (error) {
@@ -31,15 +31,13 @@ var sqlite = require('sequelize-sqlite').sqlite;
             });
         });
 
-        Area.sync({ force: true });
+        DbManager.Area.sync({ force: true });
 
-        Device.sync({ force: true });
+        DbManager.Device.sync({ force: true });
     }
     DbManager.initialize = initialize;
 })(exports.DbManager || (exports.DbManager = {}));
 var DbManager = exports.DbManager;
 
 exports.DbManager = DbManager;
-
-DbManager.initialize();
 

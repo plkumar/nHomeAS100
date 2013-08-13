@@ -12,21 +12,27 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING, get: function () {
                 return this.getDataValue('password');
             }, set: function (value) {
-                var salt = bcrypt.genSaltSync(SALT_WORK_FACTOR);
-                var hash = bcrypt.hashSync(value, salt);
-                console.log('in setter:' + value + ' hash: ' + hash);
-                //this.password = hash;
-                return this.setDataValue('password', hash);
+                if (bcrypt.getRounds(value) < 1) {
+                    var salt = bcrypt.genSaltSync(SALT_WORK_FACTOR);
+                    var hash = bcrypt.hashSync(value, salt);
+                    console.log('In setter:' + value + ' hash: ' + hash);
+                    return this.setDataValue('password', hash);
+                } else {
+                    return this.setDataValue('password', value);
+                }
             }
         },
         firstName: DataTypes.STRING,
-        lastName: DataTypes.STRING
+        lastName: DataTypes.STRING,
+        accessToken: DataTypes.STRING
     }, {
         instanceMethods: {
             comparePassword: function (candidatePassword) {
-                //console.log('Comparing Password : ' + candidatePassword);
-                //console.log('with : ' + this.password);
-                return bcrypt.compareSync(candidatePassword, this.password);
+                console.log('Comparing Password : ' + candidatePassword);
+                console.log('with hash: ' + this.password);
+                var result = bcrypt.compareSync(candidatePassword, this.password)
+                console.log('Password comparision result :' + result);
+                return result;
             },
             generateRandomToken : function () {
                 var user = this,

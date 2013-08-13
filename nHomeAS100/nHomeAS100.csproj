@@ -48,6 +48,9 @@
     <Content Include="DbManager.min.js">
       <DependentUpon>DbManager.ts</DependentUpon>
     </Content>
+    <Content Include="models\Area.js" />
+    <Content Include="models\Device.js" />
+    <Content Include="models\Favourite.js" />
     <Content Include="models\User.js" />
     <Content Include="public\stylesheets\style.css" />
     <Content Include="routes\index.js">
