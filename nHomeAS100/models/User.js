@@ -14,6 +14,7 @@ module.exports = function (sequelize, DataTypes) {
             }, set: function (value) {
                 console.log("Value :" + value + "   " + bcrypt.getRounds(value));
                 if (isNaN(bcrypt.getRounds(value))) {
+                    console.log("Hashing password");
                     var salt = bcrypt.genSaltSync(SALT_WORK_FACTOR);
                     var hash = bcrypt.hashSync(value, salt);
                     console.log('In setter:' + value + ' hash: ' + hash);
