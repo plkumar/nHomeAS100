@@ -46,15 +46,16 @@ module.exports = function (sequelize, DataTypes) {
                     if (regEx.test(dirs[index])) {
                         var path = basepath + "/" + dirs[index];
                         var device = Device.loadFromPath(path); // new OneWireDevice(path);
-                        device.save().success(function (newdevice) { devices.push(newdevice); }).error(function (error) {
+                        device.save().success(function (newdevice) {
+                            devices.push(newdevice);
+                        }).error(function (error) {
                             console.log('Error saving device : ' + error);
                         });
-                        //console.log("OneWire:", "this [" + path + "] is onewire device");
-                        return devices;
+                        //console.log("OneWire:", "this [" + path + "] is onewire device");                        
                     }
-
-                    //var stat = fs.statSync(this.rootPath + "/" + dir);
                 }
+
+                return devices;
             }
         }
     });
