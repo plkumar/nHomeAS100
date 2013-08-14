@@ -1,5 +1,5 @@
 ﻿var fs = require("fs");
-
+var _owdeviceidregex = '[A-F0-9]{2}.[A-F0-9]{12}';
 module.exports = function (sequelize, DataTypes) {
 
     var Device = sequelize.define('Device', {
@@ -33,6 +33,28 @@ module.exports = function (sequelize, DataTypes) {
                     //Alias: fs.readFileSync(this._devicepath + "/alias", 'ascii'),
                     DevicePath : _devicepath
                 });
+            },
+            enumerateDevices: function (basepath) {
+                var devices = [];
+                var dirs = fs.readdirSync(basepath);
+                //console.log(dirs);
+                var regEx = new RegExp(_owdeviceidregex);
+
+                for (var index in dirs) {
+                    //console.log('Directory :' + dirs[index]);
+
+                    if (regEx.test(dirs[index])) {
+                        var path = basepath + "/" + dirs[index];
+                        var device = Device.loadFromPath(path); // new OneWireDevice(path);
+                        device.save().success(function (newdevice) { devices.push(newdevice); }).error(function (error) {
+                            console.log('Error saving device : ' + error);
+                        });
+                        //console.log("OneWire:", "this [" + path + "] is onewire device");
+                        return devices;
+                    }
+
+                    //var stat = fs.statSync(this.rootPath + "/" + dir);
+                }
             }
         }
     });
