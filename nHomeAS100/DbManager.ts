@@ -52,6 +52,9 @@ export module DbManager{
         Area.sync({ force: true });
 
         Device.sync({ force: true });
+
+        //var sampleDevice = Device.loadFromPath('test');
+        //console.log('Device Name ' + sampleDevice.toString());
         
     }
 }

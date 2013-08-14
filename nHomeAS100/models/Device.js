@@ -12,21 +12,25 @@ module.exports = function (sequelize, DataTypes) {
         Type: { type: DataTypes.STRING, allowNull: false },
         Alias: { type: DataTypes.STRING, allowNull: false },
         DevicePath: { type: DataTypes.STRING, allowNull: false },
+        New: { type: DataTypes.BOOLEAN }
     }, {
         instanceMethods: {
-
+            toString: function () {
+                //console.log('Device : ' + this.Name);
+                return this.Name;
+            }
         },
         classMethods: {
             loadFromPath: function (path) {
                 var _devicepath=path;
                 return Device.build({
-                    DeviceId: fs.readFileSync(this._devicepath + "/id", 'ascii'),
+                    //DeviceId: fs.readFileSync(this._devicepath + "/id", 'ascii'),
                     Name: _devicepath,
-                    Family: fs.readFileSync(this._devicepath + "/family", 'ascii'),
-                    CRC: fs.readFileSync(this._devicepath + "/crc8", 'ascii'),
-                    Address: fs.readFileSync(this._devicepath + "/address", 'ascii'),
-                    Type: fs.readFileSync(this._devicepath + "/type", 'ascii'),
-                    Alias: fs.readFileSync(this._devicepath + "/alias", 'ascii'),
+                    //Family: fs.readFileSync(this._devicepath + "/family", 'ascii'),
+                    //CRC: fs.readFileSync(this._devicepath + "/crc8", 'ascii'),
+                    //Address: fs.readFileSync(this._devicepath + "/address", 'ascii'),
+                    //Type: fs.readFileSync(this._devicepath + "/type", 'ascii'),
+                    //Alias: fs.readFileSync(this._devicepath + "/alias", 'ascii'),
                     DevicePath : _devicepath
                 });
             }
