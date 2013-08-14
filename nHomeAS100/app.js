@@ -52,7 +52,6 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (id, done) {
-    console.log('Deserializing user:' + id);
     db.DbManager.User.find({ where: { accessToken: id } }).success(function (user) {
         if (user) {
             console.log('Found : ' + user.userName);
@@ -99,6 +98,17 @@ app.use(express.methodOverride());
 
 app.use(express.cookieParser('bnplbi1uaG9tZWFzMTAw'));
 app.use(express.session({ secret: 'bnplbi1uaG9tZWFzMTAw' }));
+
+app.use(function (req, res, next) {
+    if (req.method == 'POST' && req.url == '/login') {
+        if (req.body.rememberme) {
+            req.session.cookie.maxAge = 2592000000;
+        } else {
+            req.session.cookie.expires = false;
+        }
+    }
+    next();
+});
 
 app.use(flash());
 app.use(passport.initialize());

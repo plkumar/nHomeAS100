@@ -68,7 +68,7 @@ passport.serializeUser(function (user, done) {
 
 
 passport.deserializeUser(function (id, done) {
-    console.log('Deserializing user:' + id );
+    //console.log('Deserializing user:' + id );
     db.DbManager.User.find({ where: { accessToken: id } }).success(function (user) {
         if (user) {
             console.log('Found : ' + user.userName);
@@ -127,6 +127,18 @@ app.use(express.methodOverride());
 //cookie password - nhomeas100 base64 encoded
 app.use(express.cookieParser('bnplbi1uaG9tZWFzMTAw'));
 app.use(express.session({ secret: 'bnplbi1uaG9tZWFzMTAw' }));
+
+// Remember Me middleware
+app.use(function (req, res, next) {
+    if (req.method == 'POST' && req.url == '/login') {
+        if (req.body.rememberme) {
+            req.session.cookie.maxAge = 2592000000; // 30*24*60*60*1000 Rememeber 'me' for 30 days
+        } else {
+            req.session.cookie.expires = false;
+        }
+    }
+    next();
+});
 
 // Initialize Passport!  Also use passport.session() middleware, to support
 // persistent login sessions (recommended).
