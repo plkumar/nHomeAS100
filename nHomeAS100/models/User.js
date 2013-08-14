@@ -26,7 +26,11 @@ module.exports = function (sequelize, DataTypes) {
         },
         firstName: DataTypes.STRING,
         lastName: DataTypes.STRING,
-        accessToken: DataTypes.STRING
+        accessToken: {
+            type: DataTypes.STRING,
+            get: function () { return this.getDataValue('accessToken'); },
+            set: function (value) { return this.setDataValue('accessToken', value); }
+        }
     }, {
         instanceMethods: {
             comparePassword: function (candidatePassword) {

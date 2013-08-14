@@ -13,7 +13,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var db = require("./DbManager");
 
 function findByUsername(username, fn) {
-    db.DbManager.User.find({ userid: username }).success(function (founduser) {
+    db.DbManager.User.find({ where: { userName: username } }).success(function (founduser) {
         return fn(null, founduser);
     }).error(function (error) {
         console.log('Error::' + error);
@@ -23,12 +23,44 @@ function findByUsername(username, fn) {
 
 passport.serializeUser(function (user, done) {
     console.log('Serializing user:' + user.firstName);
-    done(null, user.id);
+
+    var createAccessToken = function () {
+        var token = user.generateRandomToken();
+
+        db.DbManager.User.find({ where: { accessToken: token } }).success(function (existingUser) {
+            if (existingUser) {
+                console.log('One Match found ');
+                if (existingUser) {
+                    createAccessToken();
+                }
+            } else {
+                user.accessToken = token;
+                user.save().success(function (user) {
+                    return done(null, user.accessToken);
+                }).error(function (err) {
+                    return done(err);
+                });
+            }
+        }).error(function (err) {
+            console.log("Error" + err);
+        });
+    };
+
+    if (user.id) {
+        createAccessToken();
+    }
 });
 
 passport.deserializeUser(function (id, done) {
-    db.DbManager.User.find({ id: id }).success(function (user) {
-        done(null, user);
+    console.log('Deserializing user:' + id);
+    db.DbManager.User.find({ where: { accessToken: id } }).success(function (user) {
+        if (user) {
+            console.log('Found : ' + user.userName);
+            done(null, user);
+        } else {
+            console.log('no matching user.');
+            done(null, null);
+        }
     }).error(function (error) {
         done(error, null);
     });
