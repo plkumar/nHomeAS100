@@ -51,12 +51,12 @@ export module DbManager{
 
         Area.sync({ force: true });
 
-        Device.sync({ force: true });
+        Device.sync({ force: true }).success(function () {
+            Device.enumerateDevices('/mnt/owfs');
+        });
 
         //var sampleDevice = Device.loadFromPath('test');
         //console.log('Device Name ' + sampleDevice.toString());
-        Device.enumerateDevices('/mnt/owfs');
-        
     }
 }
 
