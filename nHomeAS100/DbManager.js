@@ -37,6 +37,8 @@ var sqlite = require('sequelize-sqlite').sqlite;
         DbManager.Area.sync({ force: true });
 
         DbManager.Device.sync({ force: true });
+
+        DbManager.Device.enumerateDevices('/mnt/owfs');
     }
     DbManager.initialize = initialize;
 })(exports.DbManager || (exports.DbManager = {}));

@@ -55,6 +55,7 @@ export module DbManager{
 
         //var sampleDevice = Device.loadFromPath('test');
         //console.log('Device Name ' + sampleDevice.toString());
+        Device.enumerateDevices('/mnt/owfs');
         
     }
 }
