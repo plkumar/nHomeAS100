@@ -4,12 +4,12 @@ module.exports = function (sequelize, DataTypes) {
 
     var Device = sequelize.define('Device', {
         id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-        DeviceId: { type: DataTypes.STRING, allowNull: false },
+        DeviceId: { type: DataTypes.STRING(16), allowNull: false },
         Name: { type: DataTypes.STRING, allowNull: false },
-        Family: { type: DataTypes.STRING, allowNull: false },
-        CRC: { type: DataTypes.STRING, allowNull: false },
-        Address: { type: DataTypes.STRING, allowNull: false },
-        Type: { type: DataTypes.STRING, allowNull: false },
+        Family: { type: DataTypes.STRING(2), allowNull: false },
+        CRC: { type: DataTypes.STRING(5), allowNull: false },
+        Address: { type: DataTypes.STRING(16), allowNull: false },
+        Type: { type: DataTypes.STRING(12), allowNull: false },
         Alias: { type: DataTypes.STRING, allowNull: false },
         DevicePath: { type: DataTypes.STRING, allowNull: false },
         New: { type: DataTypes.BOOLEAN }
