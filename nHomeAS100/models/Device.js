@@ -24,13 +24,13 @@ module.exports = function (sequelize, DataTypes) {
             loadFromPath: function (path) {
                 var _devicepath=path;
                 return Device.build({
-                    DeviceId: fs.readFileSync(this._devicepath + "/id", 'ascii'),
+                    DeviceId: fs.readFileSync(_devicepath + "/id", 'ascii'),
                     Name: _devicepath,
-                    Family: fs.readFileSync(this._devicepath + "/family", 'ascii'),
-                    CRC: fs.readFileSync(this._devicepath + "/crc8", 'ascii'),
-                    Address: fs.readFileSync(this._devicepath + "/address", 'ascii'),
-                    Type: fs.readFileSync(this._devicepath + "/type", 'ascii'),
-                    Alias: fs.readFileSync(this._devicepath + "/alias", 'ascii'),
+                    Family: fs.readFileSync(_devicepath + "/family", 'ascii'),
+                    CRC: fs.readFileSync(_devicepath + "/crc8", 'ascii'),
+                    Address: fs.readFileSync(_devicepath + "/address", 'ascii'),
+                    Type: fs.readFileSync(_devicepath + "/type", 'ascii'),
+                    Alias: fs.readFileSync(_devicepath + "/alias", 'ascii'),
                     DevicePath : _devicepath
                 });
             },
