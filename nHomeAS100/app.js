@@ -2,7 +2,7 @@
 var express = require("express");
 var engine = require('ejs-locals');
 var routes = require('./routes');
-
+var devices = require('./routes/devices');
 var http = require('http');
 var path = require('path');
 var flash = require('connect-flash');
