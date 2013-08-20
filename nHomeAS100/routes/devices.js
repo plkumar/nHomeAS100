@@ -1,12 +1,13 @@
-(function (devices) {
-    function findByAll(req, res) {
-        res.render('index', { title: 'Express', user: req.user });
+var devices = (function () {
+    function devices(req, res) {
+        if (req.params.id) {
+            res.render('index', { title: 'Express', user: req.params.id });
+        } else {
+            res.render('index', { title: 'Express', user: req.user });
+        }
     }
-
-    function findById(req, res) {
-        res.render('index', { title: 'Express', user: req.params.id });
-    }
-})(exports.devices || (exports.devices = {}));
-var devices = exports.devices;
+    return devices;
+})();
+exports.devices = devices;
 ;
 
