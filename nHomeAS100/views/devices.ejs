@@ -1,5 +1,4 @@
 <% layout('boilerplate') -%>
-<%# script('/javascripts/test.js') -%>
 <% stylesheet('/stylesheets/style.css') -%>
    
 <% if (!user) { %>
@@ -15,8 +14,8 @@
 
 	<div data-role="content">
 		<ul data-role="listview" data-inset="true" data-filter="true">
-		<% for(var i=0; i<devices.length; i++) {%>
-			<li><a href="#"><%= devices[i].id %>&nbsp;<%= devices[i].Family %></a></li>
+		<% for(var i=0; i<devices.length; i++) { %>
+			<li><a href="#"><%= devices[i].DeviceId %>&nbsp;<%= devices[i].Family %></a></li>
 		<% } %>
 		</ul>
 	</div><!-- /content -->
