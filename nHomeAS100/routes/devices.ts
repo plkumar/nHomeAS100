@@ -10,7 +10,7 @@ export class devices {
             db.DbManager.Device.findAll().then(function (devices) {
                 res.render('devices', { title: 'Device List', user: req.user, devices:devices });
             });
-            res.render('index', { title: 'Express', user: req.user });
+            //res.render('index', { title: 'Express', user: req.user });
         }
     }
 };
