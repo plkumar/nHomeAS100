@@ -87,7 +87,7 @@ passport.use(new LocalStrategy(function (username, password, done) {
 
 var app = express();
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8080);
 app.engine("ejs", engine);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
