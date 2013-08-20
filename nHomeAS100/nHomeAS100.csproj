@@ -53,6 +53,13 @@
     <Content Include="models\Favourite.js" />
     <Content Include="models\User.js" />
     <Content Include="public\stylesheets\style.css" />
+    <TypeScriptCompile Include="routes\devices.ts" />
+    <Content Include="routes\devices.js">
+      <DependentUpon>devices.ts</DependentUpon>
+    </Content>
+    <Content Include="routes\devices.min.js">
+      <DependentUpon>devices.ts</DependentUpon>
+    </Content>
     <Content Include="routes\index.js">
       <DependentUpon>index.ts</DependentUpon>
     </Content>
