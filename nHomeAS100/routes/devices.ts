@@ -1,4 +1,4 @@
-import db = module("DbManager");
+import db = module("../DbManager");
 // Interface
 export class devices {
     constructor(req, res) {

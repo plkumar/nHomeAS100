@@ -1,4 +1,4 @@
-var db = require("./DbManager");
+var db = require("../DbManager");
 
 var devices = (function () {
     function devices(req, res) {
