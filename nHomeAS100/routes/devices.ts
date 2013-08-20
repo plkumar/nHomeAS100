@@ -5,7 +5,7 @@ export class devices {
         if (req.params.id) {
             console.log('Device Id:' + req.params.id);
             db.DbManager.Device.find({ where: { DeviceId: req.params.id } }).then(function (device) {
-                res.render('index', { title: 'Device', user: req.params.id, device: device });
+                res.render('devices', { title: 'Device', user: req.params.id, device: device });
             });
         } else {
             //console.log('No device id specified');
