@@ -2,7 +2,7 @@
 var express = require("express");
 var engine = require('ejs-locals');
 var routes = require('./routes');
-var devices = require('./routes/devices');
+var device = require('./routes/devices');
 var http = require('http');
 var path = require('path');
 var flash = require('connect-flash');
@@ -125,8 +125,8 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 
-app.get('/devices', routes.devices);
-app.get('/devices:id', routes.devices);
+app.get('/devices', device.devices);
+app.get('/devices:id', device.devices);
 
 app.get('/account', ensureAuthenticated, function (req, res) {
     res.render('account', { title: 'Account', user: req.user, message: req.flash('error') });
