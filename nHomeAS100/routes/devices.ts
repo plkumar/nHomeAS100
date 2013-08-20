@@ -1,3 +1,4 @@
+import db = module("DbManager");
 // Interface
 export class devices {
     constructor(req, res) {
@@ -5,7 +6,10 @@ export class devices {
             console.log('Device Id:' + req.params.id);
             res.render('index', { title: 'Express', user: req.params.id });
         } else {
-            console.log('No device id specified');
+            //console.log('No device id specified');
+            db.DbManager.Device.findAll().then(function (devices) {
+                res.render('devices', { title: 'Device List', user: req.user, devices:devices });
+            });
             res.render('index', { title: 'Express', user: req.user });
         }
     }
