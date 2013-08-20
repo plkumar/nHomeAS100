@@ -1,0 +1,30 @@
+<% layout('boilerplate') -%>
+<%# script('/javascripts/test.js') -%>
+<% stylesheet('/stylesheets/style.css') -%>
+   
+<% if (!user) { %>
+	<h2>Welcome! Please log in.</h2>
+<% } else { %>
+	<h2>Hello, <%= user.username %>.</h2>
+<% } %>
+
+<div data-role="page">
+	<div data-role="header">
+		<h1><%= title %></h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<ul data-role="listview" data-inset="true" data-filter="true">
+		<% for(var i=0; i<devices.length; i++) {%>
+			<li><a href="#"><%= devices[i].id %>&nbsp;<%= devices[i].Family %></a></li>
+		<% } %>
+		</ul>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div>
+
+<% block('header', "<p>I'm in the header.</p>") -%>
+<% block('footer', "<p>I'm in the footer.</p>") -%>
