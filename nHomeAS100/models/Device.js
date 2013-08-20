@@ -31,7 +31,8 @@ module.exports = function (sequelize, DataTypes) {
                     Address: fs.readFileSync(_devicepath + "/address", 'ascii'),
                     Type: fs.readFileSync(_devicepath + "/type", 'ascii'),
                     Alias: fs.readFileSync(_devicepath + "/alias", 'ascii'),
-                    DevicePath : _devicepath
+                    DevicePath : _devicepath,
+                    New: true
                 });
             },
             enumerateDevices: function (basepath) {

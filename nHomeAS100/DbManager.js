@@ -45,5 +45,4 @@ var sqlite = require('sequelize-sqlite').sqlite;
 var DbManager = exports.DbManager;
 
 exports.DbManager = DbManager;
-DbManager.initialize();
 

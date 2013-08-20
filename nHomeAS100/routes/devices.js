@@ -13,6 +13,11 @@ var devices = (function () {
             });
         }
     }
+    devices.prototype.newDevices = function (req, res) {
+        db.DbManager.Device.find({ where: { New: true } }).then(function (devices) {
+            res.render('newdevices', { title: 'New Devices', user: req.params.id, device: null, devices: devices });
+        });
+    };
     return devices;
 })();
 exports.devices = devices;

@@ -62,4 +62,4 @@ export module DbManager{
 
 //module.exports = DbManager;
 exports.DbManager = DbManager;
-DbManager.initialize();
+//DbManager.initialize();
