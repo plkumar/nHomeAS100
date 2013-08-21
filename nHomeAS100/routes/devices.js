@@ -19,7 +19,7 @@ function findById(req, res) {
 exports.findById = findById;
 
 function newDevices(req, res) {
-    db.DbManager.Device.find({ where: { New: true } }).then(function (devices) {
+    db.DbManager.Device.findAll({ where: { New: true } }).then(function (devices) {
         if (devices) {
             res.send({ devices: devices, error: null });
         } else {
