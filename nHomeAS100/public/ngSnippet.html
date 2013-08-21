@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html class="ui-mobile">
 <head>
+    <title>ngSnippet</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
-    <link type="text/css" rel="stylesheet" href="../components/jquery-mobile/jquery.mobile-1.3.1.min.css">
+    <link type="text/css" rel="stylesheet" href="./stylesheets/jquery.mobile-1.3.1.min.css">
 
-    <script src="../components/angular/angular.js"></script>
-    <script src="../components/angular/angular-mobile.js"></script>
-    <script src="../dist/angular-jqm.js"></script>
+    <script src="./javascripts/angular.js"></script>
+    <script src="./javascripts/angular-mobile.js"></script>
+    <script src="./javascripts/angular-jqm.js"></script>
 
     <script>
         var mod = angular.module("app", ["jqm"]);
@@ -28,8 +29,6 @@
         });
     </script>
 
-
-
     <script>
         function NoopCtrl() {
 
@@ -47,7 +46,6 @@
 
         <div jqm-header><h1>Page1</h1></div>
         <a href="#/page2.html">To page2</a>
-
         <div jqm-button ng-click="popIsShown = !popIsShown">
           Popup on the page
         </div>
@@ -79,6 +77,11 @@
         <p>hello</p>
 
         <p>hello</p>
+        <p>Selected value is: {{flip}}</p>
+        <div jqm-flip ng-model="flip" on-label="On" on-value="On" off-label="Off" off-value="Off">
+        Default values true/false
+        </div>
+
     </div>
 </script>
 
@@ -97,10 +100,8 @@
         <p>hello</p>
     </div>
 </script>
-
-<div jqm-caching-view>
-    <div jqm-footer><h1>Fixed Footer</h1></div>
-
+<div jqm-caching-view="">
+    <div jqm-footer=""><h1>Fixed Footer</h1></div>
 </div>
 
 </body>
