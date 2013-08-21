@@ -28,8 +28,10 @@
 
 	<div data-role="content">
 		<ul data-role="listview" data-inset="true" data-filter="true">
+		<% if(devices) { %>
 		<% for(var i=0; i<devices.length; i++) { %>
 			<li><a href="#"><%= devices[i].DeviceId %>&nbsp;<%= devices[i].Family %></a></li>
+		<% } %>
 		<% } %>
 		</ul>
 	</div><!-- /content -->
