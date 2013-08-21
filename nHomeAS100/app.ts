@@ -158,8 +158,8 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 
-app.get('/devices', devices.findAll);
-app.get('/devices/:id', devices.findById);
+app.get('/devices/all', devices.findAll);
+app.get('/devices/one/:id', devices.findById);
 app.get('/devices/new', devices.newDevices);
 
 //app.get('/users', user.list);
