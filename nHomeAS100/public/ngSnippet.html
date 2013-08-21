@@ -23,6 +23,10 @@
                 templateUrl: 'page2.html',
                 animation: 'page-slide'
             });
+            $routeProvider.when("/devices.html", {
+                templateUrl: 'devices.html',
+                animation: 'page-slide'
+            });
             $routeProvider.otherwise({
                 redirectTo: "main.html"
             });
@@ -46,6 +50,7 @@
 
         <div jqm-header><h1>Page1</h1></div>
         <a href="#/page2.html">To page2</a>
+        <a href="#/devices.html">Devices</a>
         <div jqm-button ng-click="popIsShown = !popIsShown">
           Popup on the page
         </div>
@@ -90,7 +95,7 @@
     <div jqm-page>
         <div jqm-header><h1>Page2</h1></div>
         <a href="#/main.html">To page1</a>
-
+        <a href="#/devices.html">Devices</a>
         <p>hello</p>
 
         <p>hello</p>
@@ -98,6 +103,13 @@
         <p>hello</p>
 
         <p>hello</p>
+    </div>
+</script>
+
+<script id="devices.html" type="text/ng-template">
+    <div jqm-page="">
+    <div jqm-header><h1>Devices Page</h1></div>
+    <a href="#/main.html">To page1</a>
     </div>
 </script>
 <div jqm-caching-view="">
