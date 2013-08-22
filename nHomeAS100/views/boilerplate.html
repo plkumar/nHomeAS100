@@ -4,17 +4,17 @@
   <head>
     <title>It's <%=title%></title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
-    <%-scripts%>
     <%-stylesheets%>
+    <%-scripts%>
   </head>
-  <body>
+  <body ng-app="app">
     <header>
       <%-blocks.header%>
     </header>
     <section>
       <%-body -%>
     </section>
-    <footer>
+    <footer jqm-caching-view="">
       <%-blocks.footer%>
     </footer>
   </body>

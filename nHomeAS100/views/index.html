@@ -4,33 +4,60 @@
 <% script('/javascripts/angular-mobile.js') -%>
 <% script('/javascripts/angular-jqm.js') -%>
 
-<p>Welcome to <%= title %></p>
-    
-<% if (!user) { %>
-	<h2>Welcome! Please log in.</h2>
-<% } else { %>
-	<h2>Hello, <%= user.username %>.</h2>
-<% } %>
-<div data-role="page">
-	<div data-role="header">
-		<h1>Page Title</h1>
-	</div><!-- /header -->
+<script>
+    var mod = angular.module("app", ["jqm"]);
+    mod.config(function ($routeProvider) {
+        $routeProvider.when("/index", {
+            redirectTo: "main.html"
+        });
+        $routeProvider.when("/main.html", {
+            templateUrl: 'main.html',
+            animation: 'page-slide'
+        });
+        $routeProvider.when("/devices.html", {
+            templateUrl: 'devices.html',
+            animation: 'page-slide'
+        });
+        $routeProvider.otherwise({
+            redirectTo: "main.html"
+        });
+    });
+    </script>
+
+    <script>
+        function NoopCtrl() {
+
+        }
+    </script>
+
+<script type="text/ng-template" id="main.html">
+	<div jqm-header="">
+		<h1><%= title %></h1>
+	</div>
+    <!-- /header -->
 
 	<div data-role="content">
-		<p>Page content goes here.</p>
+    <p>Welcome to <%= title %></p>
+    
+    <% if (!user) { %>
+	    <h2>Welcome! Please log in.</h2>
+    <% } else { %>
+	    <h2>Hello, <%= user.username %>.</h2>
+    <% } %>
+
 		<ul data-role="listview" data-inset="true" data-filter="true">
-			<li><a href="#">Acura</a></li>
-			<li><a href="#">Audi</a></li>
-			<li><a href="#">BMW</a></li>
-			<li><a href="#">Cadillac</a></li>
-			<li><a href="#">Ferrari</a></li>
+			<li><a jqm-button href="#">Acura</a></li>
+			<li><a jqm-button href="#">Audi</a></li>
+			<li><a jqm-button href="#">BMW</a></li>
+			<li><a jqm-button href="#">Cadillac</a></li>
+			<li><a jqm-button href="#">Ferrari</a></li>
 		</ul>
 	</div><!-- /content -->
 
-	<div data-role="footer">
+	<div jqm-footer="">
 		<h4>Page Footer</h4>
 	</div><!-- /footer -->
-</div>
+</script>
 
 <% block('header', "<p>I'm in the header.</p>") -%>
 <% block('footer', "<p>I'm in the footer.</p>") -%>
