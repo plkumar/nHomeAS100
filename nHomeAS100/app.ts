@@ -117,9 +117,11 @@ passport.use(new LocalStrategy(
 var app = express();
 // all environments
 app.set('port', process.env.PORT || 8080);
-app.engine("ejs",engine)
+//app.engine("ejs", engine)
+app.engine("html", engine)
 app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
+//app.set('view engine', 'ejs');
+app.set('view engine', 'html');
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());

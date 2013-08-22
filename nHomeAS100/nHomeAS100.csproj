@@ -97,14 +97,14 @@
   <ItemGroup>
     <None Include="db\nhomeasdb.db" />
     <None Include="package.json" />
-    <None Include="views\account.ejs" />
-    <None Include="views\boilerplate.ejs" />
-    <None Include="views\devices.ejs" />
-    <None Include="views\index.ejs" />
-    <None Include="views\layoutBottom.ejs" />
-    <None Include="views\layoutTop.ejs" />
-    <None Include="views\login.ejs" />
-    <None Include="views\user.ejs" />
+    <Content Include="views\account.html" />
+    <Content Include="views\boilerplate.html" />
+    <Content Include="views\devices.html" />
+    <Content Include="views\index.html" />
+    <Content Include="views\layoutBottom.html" />
+    <Content Include="views\layoutTop.html" />
+    <Content Include="views\login.html" />
+    <Content Include="views\user.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="public\images\" />
