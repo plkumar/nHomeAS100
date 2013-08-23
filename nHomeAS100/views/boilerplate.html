@@ -1,21 +1,25 @@
-﻿<!DOCTYPE html>
-<html class="ui-mobile">
+﻿<!doctype html>
+<html ng-app="app">
 <head>
-  <head>
-    <title>It's <%=title%></title>
+    <title><%=title%></title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
-    <%-stylesheets%>
-    <%-scripts%>
-  </head>
-  <body ng-app="app">
-    <header>
-      <%-blocks.header%>
-    </header>
-    <section>
-      <%-body -%>
-    </section>
-    <footer jqm-caching-view="">
-      <%-blocks.footer%>
-    </footer>
-  </body>
+    <!-- %-stylesheets% -->
+    <!-- %-scripts% -->
+    <script src="http://angular-widgets.github.io/angular-jqm/master/docs/grunt-scripts/jquery.mobile.css.js"></script>
+    <script src="http://angular-widgets.github.io/angular-jqm/master/docs/js/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular-mobile.js"></script>
+    <script src="http://angular-widgets.github.io/angular-jqm/master/docs/grunt-scripts/angular-jqm.js"></script>
+    <script src="http://angular-widgets.github.io/angular-jqm/master/docs/grunt-scripts/angular-scrolly-docs.js"></script>
+</head>
+    <body>
+        <!-- header jqm-header="">
+          <%-blocks.header%>
+        </header -->
+        <section>
+          <%-body -%>
+        </section>
+        <footer jqm-caching-view="" >
+            <%-blocks.footer%>
+        </footer>
+    </body>
 </html>

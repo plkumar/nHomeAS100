@@ -36,7 +36,7 @@
 	</div>
     <!-- /header -->
 
-	<div data-role="content">
+	<div data-role="content" jqm-theme="a">
     <p>Welcome to <%= title %></p>
     
     <% if (!user) { %>
@@ -45,19 +45,41 @@
 	    <h2>Hello, <%= user.username %>.</h2>
     <% } %>
 
-		<ul data-role="listview" data-inset="true" data-filter="true">
-			<li><a jqm-button href="#">Acura</a></li>
-			<li><a jqm-button href="#">Audi</a></li>
-			<li><a jqm-button href="#">BMW</a></li>
-			<li><a jqm-button href="#">Cadillac</a></li>
-			<li><a jqm-button href="#">Ferrari</a></li>
+		<ul>
+			<li jqm-button="" jqm-theme="e"><a href="#">Acura</a></li>
+			<li jqm-button><a href="#/devices.html">Audi</a></li>
+			<li jqm-button><a href="#">BMW</a></li>
+			<li jqm-button><a href="#">Cadillac</a></li>
+			<li jqm-button><a href="#">Ferrari</a></li>
 		</ul>
 	</div><!-- /content -->
 
-	<div jqm-footer="">
+	<!-- div jqm-footer="">
 		<h4>Page Footer</h4>
-	</div><!-- /footer -->
+	</div --><!-- /footer -->
 </script>
 
-<% block('header', "<p>I'm in the header.</p>") -%>
-<% block('footer', "<p>I'm in the footer.</p>") -%>
+<script type="text/ng-template" id="devices.html">
+	<div jqm-header="">
+		<h1><%= title %></h1>
+	</div>
+    <!-- /header -->
+
+	<div data-role="content">
+    <p>Devices</p>
+    
+		<ul data-role="listview" data-inset="true" data-filter="true">
+			<li jqm-button><a href="#">Acura</a></li>
+			<li jqm-button><a href="#">Audi</a></li>
+			<li jqm-button><a href="#">BMW</a></li>
+			<li jqm-button><a href="#">Cadillac</a></li>
+			<li jqm-button><a href="#">Ferrari</a></li>
+		</ul>
+	</div><!-- /content -->
+    <!-- div jqm-footer="">
+		<h4>Page Footer</h4>
+	</div --><!-- /footer -->
+</script>
+
+<% block('header', "<p >I'm in the header.</p>") -%>
+<% block('footer', "<div jqm-footer=''><h1>I'm in the footer.</h1></div>") -%>
