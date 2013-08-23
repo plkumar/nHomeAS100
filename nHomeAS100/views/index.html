@@ -45,18 +45,15 @@
 	    <h2>Hello, <%= user.username %>.</h2>
     <% } %>
 
-		<ul>
-			<li jqm-button="" jqm-theme="e"><a href="#">Acura</a></li>
-			<li jqm-button><a href="#/devices.html">Audi</a></li>
-			<li jqm-button><a href="#">BMW</a></li>
-			<li jqm-button><a href="#">Cadillac</a></li>
-			<li jqm-button><a href="#">Ferrari</a></li>
+		<ul jqm-theme='b'>
+			<li><a jqm-button href="#/devices.html">Devices</a></li>
+			<li><a jqm-button href="#">Home</a></li>
 		</ul>
 	</div><!-- /content -->
 
-	<!-- div jqm-footer="">
-		<h4>Page Footer</h4>
-	</div --><!-- /footer -->
+	<div jqm-footer="">
+		<h4>Main Page Footer</h4>
+	</div><!-- /footer -->
 </script>
 
 <script type="text/ng-template" id="devices.html">
@@ -68,17 +65,14 @@
 	<div data-role="content">
     <p>Devices</p>
     
-		<ul data-role="listview" data-inset="true" data-filter="true">
-			<li jqm-button><a href="#">Acura</a></li>
-			<li jqm-button><a href="#">Audi</a></li>
-			<li jqm-button><a href="#">BMW</a></li>
-			<li jqm-button><a href="#">Cadillac</a></li>
-			<li jqm-button><a href="#">Ferrari</a></li>
+		<ul data-role="listview" data-inset="true" data-filter="true" jqm-theme='a'>
+			<li><a jqm-button href="#/devices.html">Devices</a></li>
+			<li><a jqm-button href="#">Home</a></li>
 		</ul>
 	</div><!-- /content -->
-    <!-- div jqm-footer="">
-		<h4>Page Footer</h4>
-	</div --><!-- /footer -->
+    <div jqm-footer="">
+		<h4>Devices Page Footer</h4>
+	</div><!-- /footer -->
 </script>
 
 <% block('header', "<p >I'm in the header.</p>") -%>
