@@ -45,10 +45,10 @@
 	    <h2>Hello, <%= user.username %>.</h2>
     <% } %>
 
-		<ul jqm-theme='b'>
-			<li><a jqm-button href="#/devices.html">Devices</a></li>
-			<li><a jqm-button href="#">Home</a></li>
-		</ul>
+		<div jqm-controlgroup jqm-theme='b'>
+	        <div jqm-button icon="ui-icon-home" href="#">Home</div>		
+            <div jqm-button icon="ui-icon-search" href="#/devices.html">Devices</div>
+		</div>
 	</div><!-- /content -->
 
 	<div jqm-footer="">
@@ -64,11 +64,10 @@
 
 	<div data-role="content">
     <p>Devices</p>
-    
-		<ul data-role="listview" data-inset="true" data-filter="true" jqm-theme='a'>
-			<li><a jqm-button href="#/devices.html">Devices</a></li>
-			<li><a jqm-button href="#">Home</a></li>
-		</ul>
+		<div jqm-controlgroup jqm-theme='b'>
+	        <div jqm-button icon="ui-icon-home" href="#">Home</div>		
+            <div jqm-button icon="ui-icon-search" href="#/devices.html">Devices</div>
+		</div>
 	</div><!-- /content -->
     <div jqm-footer="">
 		<h4>Devices Page Footer</h4>
