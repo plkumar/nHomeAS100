@@ -109,6 +109,7 @@
     <Content Include="views\layoutBottom.html" />
     <Content Include="views\layoutTop.html" />
     <Content Include="views\login.html" />
+    <Content Include="views\test.html" />
     <Content Include="views\user.html" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,6 @@
 var index = (function () {
     function index(req, res) {
-        res.render('index', { title: 'Express', user: req.user });
+        res.render('test', { title: 'Express', user: req.user });
     }
     return index;
 })();
